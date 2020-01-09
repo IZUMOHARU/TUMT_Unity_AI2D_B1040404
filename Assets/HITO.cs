@@ -8,9 +8,12 @@ public class HITO : MonoBehaviour
 {
     public int speed = 10;
     public float jump = 2.5f;
+    public string NAME = "HITO";
+    public bool pass = false;
+
     public UnityEvent onEat;
     public float hp = 5;
-    public GameObject[] hpBar;
+    public GameObject[] Image;
     public GameObject final;
     public int Coin = 1;
 
@@ -58,10 +61,9 @@ public class HITO : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGround == true)
+        if (Input.GetKeyDown(KeyCode.Space) )
         {
-            isGround = false;
-            r2d.AddForce(new Vector2(0, jump));
+            r2d.AddForce(new Vector2(0, jump * Input.GetAxis("Jump")));
         }
     }
     private void Turn(int direction = 0)
@@ -83,17 +85,15 @@ public class HITO : MonoBehaviour
 
         if (hp == 2)
         {
-            Destroy(hpBar[2].gameObject);
+            Destroy(Image[2].gameObject);
         }
         if (hp == 1)
         {
-            Destroy(hpBar[1].gameObject);
+            Destroy(Image[1].gameObject);
         }
         if (hp <= 0)
         {
-            Destroy(hpBar[0].gameObject);
-            Destroy(hpBar[1].gameObject);
-            Destroy(hpBar[2].gameObject);
+
         }
 
         if (hp <= 0) final.SetActive(true);
