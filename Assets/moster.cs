@@ -18,10 +18,11 @@ public Transform checkPoint;
     {
         Move();
     }
+
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawRay(checkPoint.position, -checkPoint.up * 3);
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(checkPoint.position, -checkPoint.up * 2);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
